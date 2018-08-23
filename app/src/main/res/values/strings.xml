@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Soporte ipnet</string>
+    <string name="title_activity_main">IPnet Soporte</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="tab_text_1">Fast Track</string>
+    <string name="tab_text_2">Ayuda</string>
+    <string name="tab_text_3">Contacto</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
