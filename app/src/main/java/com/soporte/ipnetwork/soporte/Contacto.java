@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 /**
@@ -62,7 +64,7 @@ public class Contacto extends Fragment {
         }
     }
 
-    private Button bFacebook,bTwitter;
+    private Button bFacebook,bTwitter,bTelefono,bCorreo;
     private View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -91,6 +93,49 @@ public class Contacto extends Fragment {
 
             }
         });
+
+        bTelefono = (Button) view.findViewById(R.id.telefono);
+        bTelefono.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String phone = "+582122785911";
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
+                startActivity(intent);
+
+
+            }
+        });
+
+        bCorreo = (Button) view.findViewById(R.id.correo);
+        bCorreo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.i("Enviar correo", "");
+                String[] TO = {"soporte@ip-network.net"};
+
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+
+                emailIntent.setData(Uri.parse("mailto:"));
+                emailIntent.setType("text/plain");
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+
+
+
+                try {
+                    startActivity(Intent.createChooser(emailIntent, "Enviar correo..."));
+
+                    Log.i("Cargando", "");
+                    Toast.makeText(getActivity(), "Seleccione una opcion", Toast.LENGTH_SHORT).show();
+
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(getActivity(), "Por favor instalar un cliente EMAIL (GMAIL)", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
         return view;
     }
 
